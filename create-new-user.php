@@ -1,9 +1,16 @@
 <html>
-<head>
-insert details of the new user
-</head>
 <body>
-<form action = "create-new-user-action.php", method = "post">
+<?php
+require_once "functions.php";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	if (isset($_POST["user_fullname"]) && isset($_POST["u_name"]) && isset($_POST["password"]) && isset($_POST["email_id"])) {
+		create_new_user($_POST["user_fullname"], $_POST["u_name"], $_POST["password"], $_POST["email_id"]);
+	}
+}
+else { ?>
+<h2>insert details of the new user</h2>
+<form action = "create-new-user.php", method = "post">
 full name: <input type = "text" name = "user_fullname">
 <br>
 username: <input type = "text" name = "u_name">
@@ -16,5 +23,6 @@ email id: <input type = "text" name = "email_id">
 	create new user
 </button>
 </form>
+<?php } ?>
 </body>
 </html>

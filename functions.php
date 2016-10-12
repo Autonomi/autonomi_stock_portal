@@ -39,7 +39,7 @@ function create_new_user($user_fullname, $u_name, $password, $email_id) {
 	$conn->close();
 }
 
-function insert_purchase ($name, $description, $image_link) {
+function insert_purche ($name, $description, $image_link) {
 	global $servername, $username, $password, $db_name;
 	$conn = new mysqli($servername, $username, $password);
 	

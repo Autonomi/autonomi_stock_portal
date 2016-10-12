@@ -1,0 +1,1 @@
+/opt/lampp/bin/mysqldump -u root -p Stock > /opt/lampp/htdocs/autonomi_stock_portal/stock_db.sql
