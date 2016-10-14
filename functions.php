@@ -39,13 +39,13 @@ function create_new_user($user_fullname, $u_name, $password, $email_id) {
 	$conn->close();
 }
 
-function insert_purche ($name, $description, $image_link) {
+function issue_stock ($user_id, $stock_id, $quantity) {
 	global $servername, $username, $password, $db_name;
 	$conn = new mysqli($servername, $username, $password);
 	
 	$conn->query("use ".$db_name);
 
-	$sql = "INSERT INTO purchase_list (stock_id, quantity, bill_id) VALUES (".$stock_id.", ".$quantity.", ".$bill_id.")";
+	$sql = "INSERT INTO  (user_id, stock_id, quantity) VALUES (".$user_id.", ".$stock_id.", ".$quantity.")";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo "New record created successfully";
@@ -54,6 +54,13 @@ function insert_purche ($name, $description, $image_link) {
 	}
 
 	$conn->close();
+}
+
+function validate_input($data) {
+  	$data = trim($data);
+  	$data = stripslashes($data);
+  	$data = htmlspecialchars($data);
+  	return $data;
 }
 
 ?>

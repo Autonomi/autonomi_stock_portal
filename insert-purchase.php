@@ -16,7 +16,7 @@ new entry
 }
 else {?>
 <h2>insert the details of your latest purchases</h2>
-<form action = "insert-purchase.php", method = "post">
+<form action = "<?php echo validate_input($_SERVER['PHP_SELF']);?>", method = "post">
 Stock id: <input type = "text" name = "stock_id">
 <br>
 Quantity: <input type = "text" name = "quantity">

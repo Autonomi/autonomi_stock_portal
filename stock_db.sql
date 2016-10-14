@@ -49,8 +49,9 @@ DROP TABLE IF EXISTS `issued_stock_list`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `issued_stock_list` (
   `issue_id` int(4) NOT NULL,
-  `student_id` int(4) NOT NULL,
+  `user_id` int(4) NOT NULL,
   `stock_id` int(4) NOT NULL,
+  `quantity` int(3) NOT NULL DEFAULT '1',
   `issue_date` date NOT NULL,
   `return_date` date DEFAULT NULL,
   `stock_condition_ok` tinyint(1) NOT NULL,
@@ -82,7 +83,7 @@ CREATE TABLE `purchase_list` (
   `quantity` int(3) DEFAULT NULL,
   `bill_id` int(6) DEFAULT NULL,
   PRIMARY KEY (`purchase_id`,`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +134,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email_id` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -142,6 +143,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'he','klj','d41d8cd98f00b204e9800998ecf8427e','jlj'),(2,'','','d41d8cd98f00b204e9800998ecf8427e',''),(3,'','','d41d8cd98f00b204e9800998ecf8427e',''),(4,'','','d41d8cd98f00b204e9800998ecf8427e',''),(5,'','','d41d8cd98f00b204e9800998ecf8427e',''),(6,'gfs','sgf','d41d8cd98f00b204e9800998ecf8427e','sg'),(7,'HEYY','kjh','d41d8cd98f00b204e9800998ecf8427e','kjj@hkj'),(8,'','','d41d8cd98f00b204e9800998ecf8427e',''),(9,'','','d41d8cd98f00b204e9800998ecf8427e',''),(10,'','','d41d8cd98f00b204e9800998ecf8427e',''),(11,'','','d41d8cd98f00b204e9800998ecf8427e',''),(12,'e','','d41d8cd98f00b204e9800998ecf8427e',''),(13,'','','d41d8cd98f00b204e9800998ecf8427e',''),(14,'','','d41d8cd98f00b204e9800998ecf8427e','');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -154,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-12 17:16:55
+-- Dump completed on 2016-10-14  6:06:36

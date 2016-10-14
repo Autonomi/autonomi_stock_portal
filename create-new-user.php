@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 else { ?>
 <h2>insert details of the new user</h2>
-<form action = "create-new-user.php", method = "post">
+<form action = "<?php echo validate_input($_SERVER['PHP_SELF']);?>", method = "post">
 full name: <input type = "text" name = "user_fullname">
 <br>
 username: <input type = "text" name = "u_name">
@@ -18,7 +18,7 @@ username: <input type = "text" name = "u_name">
 password: <input type = "password" name = "password">
 <br>
 email id: <input type = "text" name = "email_id">
-<br>
+<br> 
 <button type = "submit">
 	create new user
 </button>
