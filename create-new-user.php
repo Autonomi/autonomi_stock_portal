@@ -1,28 +1,14 @@
-<html>
-<body>
 <?php
 require_once "functions.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-	if (isset($_POST["user_fullname"]) && isset($_POST["u_name"]) && isset($_POST["password"]) && isset($_POST["email_id"])) {
-		create_new_user($_POST["user_fullname"], $_POST["u_name"], $_POST["password"], $_POST["email_id"]);
+	if (isset($_POST["user_fullname"]) && isset($_POST["u_name"]) && isset($_POST["password"]) && isset($_POST["email_id"]) && isset($_POST["confirm_password"])) {
+		if ($_POST["password"] === $_POST["confirm_password"]) {
+			create_new_user($_POST["user_fullname"], $_POST["u_name"], $_POST["password"], $_POST["email_id"]);
+		}
+		else {
+			$_SESSION["registration_error"] = "THE PASSWORDS DID NOT MATCH";
+		}
+		header("Location: index.php");
 	}
-}
-else { ?>
-<h2>insert details of the new user</h2>
-<form action = "<?php echo validate_input($_SERVER['PHP_SELF']);?>", method = "post">
-full name: <input type = "text" name = "user_fullname">
-<br>
-username: <input type = "text" name = "u_name">
-<br>
-password: <input type = "password" name = "password">
-<br>
-email id: <input type = "text" name = "email_id">
-<br> 
-<button type = "submit">
-	create new user
-</button>
-</form>
-<?php } ?>
-</body>
-</html>
+}?>
