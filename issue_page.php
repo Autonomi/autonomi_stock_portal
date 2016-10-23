@@ -70,7 +70,7 @@
                                                 1
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id 0'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='Stock_id0'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
                                             <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
@@ -83,7 +83,7 @@
                                                 2
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id 1'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='Stock_id1'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
                                             <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
@@ -96,7 +96,7 @@
                                                 3
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id 2'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='Stock_id2'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
                                             <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
@@ -109,7 +109,7 @@
                                                 4
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id 3'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='Stock_id3'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
                                             <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
@@ -122,7 +122,7 @@
                                                 5
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id 4'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='Stock_id4'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
                                             <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
