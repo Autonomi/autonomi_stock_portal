@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="stock.css">
 </head>
 <body>
+<?php 
+if (isset($_SESSION["registration_error"]))
+    echo "<script> $(\"#upModal\").modal(\"show\")</script>";
+else if (isset($_SESSION["login_error"]))
+    echo "<script> $(\"#inModal\").modal(\"show\")</script>";
+?>
     <div id="header">
         <div id="top-nav">
             <img src="images/cic_logo.png" height="100px">
@@ -141,6 +147,7 @@
                         }
                         ?>
                         <form role="form" action = "login.php" method = "POST">
+                        <!--
                              <div class="dropdown">
                               <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Account Type
                               <span class="caret"></span></button>
@@ -150,6 +157,7 @@
                                 <li><a href="#">STUDENT</a></li>
                               </ul>
                             </div>
+                            -->
                             <div class="form-group">
                                 <input type="text" name="u_name" id="u_name" class="form-control input-sm" placeholder="username">
                             </div>
@@ -169,12 +177,7 @@
 
   </div>
 </div>
-<?php 
-if (isset($_SESSION["registration_error"]))
-    echo "<script> $(\"#upModal\").modal(\"show\")</script>";
-else if (isset($_SESSION["login_error"]))
-    echo "<script> $(\"#inModal\").modal(\"show\")</script>";
-?>
+
 
 
 

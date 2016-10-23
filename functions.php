@@ -1,13 +1,13 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$pass = "";
 $db_name = "Stock";
 
 
 function insert_purchase ($stock_id, $quantity, $bill_id) {
-	global $servername, $username, $password, $db_name;
-	$conn = new mysqli($servername, $username, $password);
+	global $servername, $username, $pass, $db_name;
+	$conn = new mysqli($servername, $username, $pass);
 	
 	$conn->query("use ".$db_name);
 
@@ -23,8 +23,8 @@ function insert_purchase ($stock_id, $quantity, $bill_id) {
 }
 
 function create_new_user($user_fullname, $u_name, $password, $email_id) {
-	global $servername, $username, $password, $db_name;
-	$conn = new mysqli($servername, $username, $password);
+	global $servername, $username, $pass, $db_name;
+	$conn = new mysqli($servername, $username, $pass);
 
 	$conn -> query("use ".$db_name);
 
@@ -36,12 +36,12 @@ function create_new_user($user_fullname, $u_name, $password, $email_id) {
 }
 
 function login($u_name, $password) {
-	global $servername, $username, $password, $db_name;
-	$conn = new mysqli($servername, $username, $password);
+	global $servername, $username, $pass, $db_name;
+	$conn = new mysqli($servername, $username, $pass);
 
 	$conn -> query("use ".$db_name);
 
-	$result = $conn -> query("select user_id, u_name, password from users where u_name == '".$u_name."' && password == '".md5($password)."'");
+	$result = $conn -> query("select user_id from users where username = \"".$u_name."\" && password = \"".md5($password)."\"");
 	if ($result->num_rows > 0) {
 		$data = $result->fetch_assoc();
 		$_SESSION["user_id"] = $data["user_id"];
@@ -54,16 +54,16 @@ function login($u_name, $password) {
 	}
 }
 
-function issue_stock ($user_id, $stock_id, $quantity) {
-	global $servername, $username, $password, $db_name;
-	$conn = new mysqli($servername, $username, $password);
+function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
+	global $servername, $username, $pass, $db_name;
+	$conn = new mysqli($servername, $username, $pass);
 	
 	$conn->query("use ".$db_name);
 
-	$sql = "INSERT INTO  (user_id, stock_id, quantity) VALUES (".$user_id.", ".$stock_id.", ".$quantity.")";
+	$sql = "INSERT INTO issued_stock_list (user_id, stock_id, quantity, issue_date, return_date) VALUES (".$user_id.", ".$stock_id.", ".$quantity.", curdate(), \"".$return_date."\")";
 
 	if ($conn->query($sql) === TRUE) {
-	    echo "New record created successfully";
+	    echo "New issue request created successfully";
 	} else {
 	    echo "Error: " . $sql . "<br>" . $conn->error;
 	}
