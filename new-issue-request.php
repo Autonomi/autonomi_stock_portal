@@ -8,9 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 	
 	for ($i = 0; $i < 5; $i++) {
-		if ($_POST["stock_id".$i.""] != "") {
+		if ($_POST["stock_id$i"] != "") {
 			issue_stock($_SESSION["user_id"], $_POST["stock_id".$i.""], $_POST["quantity".$i.""], $_POST["return_date".$i.""]);
 		}
 	}
 	header("Location: home.php");
-}?>
+}
+?>

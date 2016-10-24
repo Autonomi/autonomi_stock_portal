@@ -67,6 +67,26 @@ function login($u_name, $password) {
 	}
 }
 
+function get_username() {
+	global $servername, $username, $pass, $db_name;
+	$conn = new mysqli($servername, $username, $pass);
+
+	$conn -> query("use ".$db_name);
+
+	$result = $conn -> query("SELECT username FROM users WHERE user_id = ".$_SESSION["user_id"].";");
+	if ($result->num_rows > 0) {
+		$data = $result->fetch_assoc();
+		$u_name = $data["username"];
+		$conn->close();
+		return $u_name;
+	}
+	else {
+		echo "errorrjklsvjxclkjfsda;lkfdsja;lkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjldakfsj";
+		$conn->close();
+		return FALSE;
+	}
+}
+
 function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
 	global $servername, $username, $pass, $db_name;
 	$conn = new mysqli($servername, $username, $pass);

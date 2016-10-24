@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS `issued_stock_list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `issued_stock_list` (
-  `issue_id` int(4) NOT NULL,
+  `issue_id` int(4) NOT NULL AUTO_INCREMENT,
   `user_id` int(4) NOT NULL,
   `stock_id` int(4) NOT NULL,
   `quantity` int(3) NOT NULL DEFAULT '1',
@@ -57,8 +57,12 @@ CREATE TABLE `issued_stock_list` (
   `stock_condition_ok` tinyint(1) NOT NULL,
   `fine_amount` int(5) DEFAULT '0',
   `comments` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`issue_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`issue_id`),
+  KEY `user_id` (`user_id`),
+  KEY `stock_id` (`stock_id`),
+  CONSTRAINT `issued_stock_list_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `issued_stock_list_ibfk_2` FOREIGN KEY (`stock_id`) REFERENCES `stock_description` (`stock_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,6 +71,7 @@ CREATE TABLE `issued_stock_list` (
 
 LOCK TABLES `issued_stock_list` WRITE;
 /*!40000 ALTER TABLE `issued_stock_list` DISABLE KEYS */;
+INSERT INTO `issued_stock_list` VALUES (1,20,1,1,'2016-10-23','2016-10-28',0,0,NULL),(2,20,1,1,'2016-10-23','2016-10-28',0,0,NULL),(3,20,1,1,'2016-10-24','2016-10-29',0,0,NULL),(4,20,1,1,'2016-10-24','2016-10-29',0,0,NULL),(5,20,2,1,'2016-10-24','2016-10-22',0,0,NULL),(6,20,1,2,'2016-10-24','2016-09-30',0,0,NULL),(7,20,1,21,'2016-10-24','2016-10-21',0,0,NULL),(8,20,2,1,'2016-10-24','2016-11-05',0,0,NULL),(9,20,1,1,'2016-10-24','2016-10-29',0,0,NULL),(10,20,2,1,'2016-10-24','2016-10-22',0,0,NULL),(11,20,1,2,'2016-10-24','2016-09-30',0,0,NULL),(12,20,1,21,'2016-10-24','2016-10-21',0,0,NULL),(13,20,2,1,'2016-10-24','2016-11-05',0,0,NULL);
 /*!40000 ALTER TABLE `issued_stock_list` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +88,7 @@ CREATE TABLE `purchase_list` (
   `quantity` int(3) DEFAULT NULL,
   `bill_id` int(6) DEFAULT NULL,
   PRIMARY KEY (`purchase_id`,`stock_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +113,7 @@ CREATE TABLE `stock_description` (
   `description` varchar(255) DEFAULT NULL,
   `image_link` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,6 +122,7 @@ CREATE TABLE `stock_description` (
 
 LOCK TABLES `stock_description` WRITE;
 /*!40000 ALTER TABLE `stock_description` DISABLE KEYS */;
+INSERT INTO `stock_description` VALUES (1,'motors','these are dc motors',NULL),(2,'wires','wires help in making connections',NULL);
 /*!40000 ALTER TABLE `stock_description` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +140,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email_id` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +149,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'he','klj','d41d8cd98f00b204e9800998ecf8427e','jlj'),(2,'','','d41d8cd98f00b204e9800998ecf8427e',''),(3,'','','d41d8cd98f00b204e9800998ecf8427e',''),(4,'','','d41d8cd98f00b204e9800998ecf8427e',''),(5,'','','d41d8cd98f00b204e9800998ecf8427e',''),(6,'gfs','sgf','d41d8cd98f00b204e9800998ecf8427e','sg'),(7,'HEYY','kjh','d41d8cd98f00b204e9800998ecf8427e','kjj@hkj'),(8,'','','d41d8cd98f00b204e9800998ecf8427e',''),(9,'','','d41d8cd98f00b204e9800998ecf8427e',''),(10,'','','d41d8cd98f00b204e9800998ecf8427e',''),(11,'','','d41d8cd98f00b204e9800998ecf8427e',''),(12,'e','','d41d8cd98f00b204e9800998ecf8427e',''),(13,'','','d41d8cd98f00b204e9800998ecf8427e',''),(14,'','','d41d8cd98f00b204e9800998ecf8427e','');
+INSERT INTO `users` VALUES (1,'he','klj','d41d8cd98f00b204e9800998ecf8427e','jlj'),(2,'','','d41d8cd98f00b204e9800998ecf8427e',''),(3,'','','d41d8cd98f00b204e9800998ecf8427e',''),(4,'','','d41d8cd98f00b204e9800998ecf8427e',''),(5,'','','d41d8cd98f00b204e9800998ecf8427e',''),(6,'gfs','sgf','d41d8cd98f00b204e9800998ecf8427e','sg'),(7,'HEYY','kjh','d41d8cd98f00b204e9800998ecf8427e','kjj@hkj'),(8,'','','d41d8cd98f00b204e9800998ecf8427e',''),(9,'','','d41d8cd98f00b204e9800998ecf8427e',''),(10,'','','d41d8cd98f00b204e9800998ecf8427e',''),(11,'','','d41d8cd98f00b204e9800998ecf8427e',''),(12,'e','','d41d8cd98f00b204e9800998ecf8427e',''),(13,'','','d41d8cd98f00b204e9800998ecf8427e',''),(14,'','','d41d8cd98f00b204e9800998ecf8427e',''),(15,'gjh','hj','d41d8cd98f00b204e9800998ecf8427e','hk@h.com'),(16,'ridhwan luthra','ridhwan','d41d8cd98f00b204e9800998ecf8427e','luthraridhwan@gmail.com'),(17,'rid','rid','d41d8cd98f00b204e9800998ecf8427e','we@e.com'),(18,'hk','hkjh','','jkh@hgk.com'),(19,'ef','efw','123','e@g.c'),(20,'gh','ridh','c4ca4238a0b923820dcc509a6f75849b','l@gm.com'),(21,'lkjjafd','heyy','81dc9bdb52d04dc20036dbd8313ed055','ljk@ljk.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -156,4 +162,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-10-14  6:06:36
+-- Dump completed on 2016-10-25  0:40:32

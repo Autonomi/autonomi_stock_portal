@@ -29,12 +29,13 @@
                     <ul class="nav navbar-nav">
                     <li><div class="row">
                         <div class="col-lg-12">
-                            <a href="#" class="btn btn-success" id="menu-toggle"><span >Student</span></a>
+                            <a href="#" class="btn btn-success" id="menu-toggle"><span >Hello, <?php require_once "functions.php";echo get_username();?></span></a>
                         </div>
                     </div></li>
                         <li class="active"><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
+                        <li ><a href="issue_page.php" >ISSUE</a></li>
                     </ul>
             </div>
          </nav>

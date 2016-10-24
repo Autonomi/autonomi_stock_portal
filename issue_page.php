@@ -43,7 +43,7 @@
         </div>
 
         <!-- Page content -->
-                <form role="form">
+                <form role="form" action = "new-issue-request.php" method = "POST">
                      <div class="container" id="issue_tab">
                         <div class="row clearfix">
                             <div class="col-md-5 column">
@@ -70,65 +70,65 @@
                                                 0
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id0'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name="stock_id0"  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                                            <input type="text" name='quantity0' placeholder='Quantity' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                                            <input type="date" name='return_date0' placeholder='Return_date' class="form-control"/>
                                             </td>
                                             <tr id='addr1'>
                                             <td>
                                                 2
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id1'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='stock_id1'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                                            <input type="text" name='quantity1' placeholder='Quantity' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                                            <input type="date" name='return_date1' placeholder='Return_date' class="form-control"/>
                                             </td>
                                             <tr id='addr2'>
                                             <td>
                                                 3
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id2'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='stock_id2'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                                            <input type="text" name='quantity2' placeholder='Quantity' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                                            <input type="date" name='return_date2' placeholder='Return_date' class="form-control"/>
                                             </td>
                                             <tr id='addr3'>
                                             <td>
                                                 4
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id3'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='stock_id3'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                                            <input type="text" name='quantity3' placeholder='Quantity' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                                            <input type="date" name='return_date3' placeholder='Return_date' class="form-control"/>
                                             </td>
                                             <tr id='addr4'>
                                             <td>
                                                 5
                                             </td>
                                             <td>
-                                            <input type="text" name='Stock_id4'  placeholder='Stock_id' class="form-control"/>
+                                            <input type="text" name='stock_id4'  placeholder='Stock_id' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                                            <input type="text" name='quantity4' placeholder='Quantity' class="form-control"/>
                                             </td>
                                             <td>
-                                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                                            <input type="date" name='return_date4' placeholder='Return_date' class="form-control"/>
                                             </td>
                                         </tr>
                                     </tbody>
