@@ -6,16 +6,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$_SESSION["user_not_found"] = "Login first";
 		header("Location: index.php");
 	}
-	$i = 0;
 	
-	if (isset($_POST["stock_id"]) && isset($_POST["quantity"]) && isset($_POST["return_date"])) {
-		issue_stock($_SESSION["user_id"], $_POST["stock_id"], $_POST["quantity"], $_POST["return_date"]);
-		$i++;
-	}
-
-	while (isset($_POST["stock_id".$i.""]) && isset($_POST["quantity".$i.""]) && isset($_POST["return_date".$i.""])) {
-		issue_stock($_SESSION["user_id"], $_POST["stock_id".$i.""], $_POST["quantity".$i.""], $_POST["return_date".$i.""]);
-		$i++;
+	for ($i = 0; $i < 5; $i++) {
+		if ($_POST["stock_id".$i.""] != "") {
+			issue_stock($_SESSION["user_id"], $_POST["stock_id".$i.""], $_POST["quantity".$i.""], $_POST["return_date".$i.""]);
+		}
 	}
 	header("Location: home.php");
 }?>
