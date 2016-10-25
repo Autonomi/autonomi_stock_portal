@@ -25,7 +25,7 @@
                         <li class="active"><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li><a href="#">ISSUE</a></li>
+                        <li><a href="new-issue-request.php">ISSUE</a></li>
                     </ul>
             </div>
          </nav>
@@ -35,14 +35,14 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li><a href="#">Account</a></li>
-                    <li><a href="#">Add Purchase</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                    
+                    <li><a href="purchase.php">Purchase</a></li>
+                    <li><a href="new-stock-entry.php">New Stock Entry</a></li>
+                    <li><a href="login.php">Logout</a></li>
                 </ul>
             </div>
         </div>
-            <form role="form" >
+            <form role="form" action = "insert-purchase.php" method = "POST">
                      <div class="container" id="issue_tab">
                         <div class="row clearfix">
                             <div class="col-md-5 column">
@@ -58,12 +58,12 @@
                                             </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id='addr0'>
+                                        <tr id='addr2'>
                                         <td>
-                                            1
+                                            3
                                         </td>
                                         <td>
-                                        <input type="text" name="stock_id"  placeholder='Stock_id' class="form-control"/>
+                                        <input type="Date" name='bill_date'  placeholder='Bill Date' class="form-control"/>
                                         </td>
                                         </tr>
                                         <tr id='addr1'>
@@ -74,13 +74,20 @@
                                         <input type="text" name='bill_amount'  placeholder='Price of stock' class="form-control"/>
                                         </td>
                                         </tr>
-                                        
-                                        <tr id='addr2'>
+                                        <tr id='addr4'>
                                         <td>
-                                            3
+                                            5
                                         </td>
                                         <td>
-                                        <input type="Date" name='bill_date'  placeholder='Bill Date' class="form-control"/>
+                                        <input type="text" name='bill_image_link'  placeholder='Bill Image Link' class="form-control"/>
+                                        </td>
+                                        </tr>
+                                        <tr id='addr3'>
+                                        <td>
+                                            4
+                                        </td>
+                                        <td>
+                                        <input type="text" name='name'  placeholder='Name of Stock' class="form-control"/>
                                         </td>
                                         </tr>
                                         <tr id='addr3'>
@@ -91,14 +98,7 @@
                                         <input type="text" name='quantity'  placeholder='Quantity' class="form-control"/>
                                         </td>
                                         </tr>
-                                        <tr id='addr4'>
-                                        <td>
-                                            5
-                                        </td>
-                                        <td>
-                                        <input type="text" name='bill_link'  placeholder='Bill Image Link' class="form-control"/>
-                                        </td>
-                                        </tr>
+                                        
                                         <tr id='addr5'>
                                         <td>
                                             6
@@ -107,20 +107,12 @@
                                         <input type="text" name='description'  placeholder='Description' class="form-control"/>
                                         </td>
                                         </tr>
-                                        <tr id='addr6'>
-                                        <td>
-                                            7
-                                        </td>
-                                        <td>
-                                        <input type="text" name='bill_amount'  placeholder='Price of stock' class="form-control"/>
-                                        </td>
-                                        </tr>
                                         <tr id='addr7'>
                                         <td>
                                             8
                                         </td>
                                         <td>
-                                        <input type="text" name='stock_image'  placeholder='Stock image link' class="form-control"/>
+                                        <input type="text" name='image_link'  placeholder='Stock image link' class="form-control"/>
                                         </td>
                                         </tr>
                                     </tbody>
@@ -129,7 +121,6 @@
                         </div >
                         <div id="">
                             <input type="SUBMIT" id="Purchased" value="Purchased" class="btn btn-default">
-                            <input type="SUBMIT" id="anotherPurchase" value="Add Another Purchase" class="btn btn-default">
                         </div>
                     </div>
 

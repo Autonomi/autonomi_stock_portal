@@ -25,7 +25,7 @@
                         <li class="active"><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li><a href="new-issue-request.php">ISSUE</a></li>
+                        <li ><a href="issue_page.php">ISSUE</a></li>
                     </ul>
             </div>
          </nav>
@@ -36,8 +36,8 @@
                 <ul class="sidebar-nav">
                     <li><a href="#">Account</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="purchase.php">purchase</a></li>
-                    <li><a href="#">New Purchase</a></li>
+                    <li><a href="purchase.php">Purchase</a></li>
+                    <li><a href="new-stock-entry.php">New Stock Entry</a></li>
                     <li><a href="login.php">Logout</a></li>
                 </ul>
             </div>
