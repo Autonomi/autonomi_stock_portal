@@ -81,7 +81,7 @@ function get_username() {
 		return $u_name;
 	}
 	else {
-		echo "errorrjklsvjxclkjfsda;lkfdsja;lkjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjldakfsj";
+		echo "error in getting username";
 		$conn->close();
 		return FALSE;
 	}

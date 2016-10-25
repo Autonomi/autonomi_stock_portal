@@ -29,7 +29,11 @@
                     <ul class="nav navbar-nav">
                     <li><div class="row">
                         <div class="col-lg-12">
-                            <a href="#" class="btn btn-success" id="menu-toggle"><span >Hello, <?php require_once "functions.php";echo get_username();?></span></a>
+                            <a href="#" class="btn btn-success" id="menu-toggle"><span ><?php require_once "functions.php";
+                            if (isset($_SESSION["user_id"]))
+                                {echo "Hello, ".get_username()."";}
+                            else 
+                                { echo "Student";} ?></span></a>
                         </div>
                     </div></li>
                         <li class="active"><a href="#" >HOME</a></li>
@@ -46,7 +50,7 @@
                 <ul class="sidebar-nav">
                     <li><a href="#">Account</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="login.php">Logout</a></li>
                 </ul>
             </div>
         </div>
