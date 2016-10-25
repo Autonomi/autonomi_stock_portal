@@ -25,7 +25,8 @@
                         <li class="active"><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li><a href="#">ISSUE</a></li>
+                        <li><a href="new-issue-request.php">ISSUE</a></li>
+                        <li><a href="#">Return</a></li>
                     </ul>
             </div>
          </nav>
