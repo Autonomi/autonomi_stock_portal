@@ -50,6 +50,7 @@
                 <ul class="sidebar-nav">
                     <li><a href="#">Account</a></li>
                     <li><a href="#">Settings</a></li>
+                    <li><a href="purchase.php">Purchase</a></li>
                     <li><a href="login.php">Logout</a></li>
                 </ul>
             </div>
