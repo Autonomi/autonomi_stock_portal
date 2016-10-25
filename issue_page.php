@@ -137,7 +137,6 @@
                         </div >
                         <input type="SUBMIT" id="issue_me" value="issue_me" class="btn btn-default">
                     </div>
-
                 </form>
         <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -167,3 +166,113 @@
     
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<form role="form">
+     <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-5    column">
+                <table class="table table-bordered table-hover" id="tab_logic">
+                    <thead>
+                        <tr >
+                            <th class="text-center">
+                                Stock_id
+                            </th>
+                            <th class="text-center">
+                                Quantity
+                            </th>
+                            <th class="text-center">
+                                Return_Date
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id='addr0'>
+                            <td>
+                            <input type="text" name='Stock_id 0'  placeholder='Stock_id' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                            </td>
+                            <tr id='addr0'>
+                            <td>
+                            <input type="text" name='Stock_id 1'  placeholder='Stock_id' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                            </td>
+                            <tr id='addr0'>
+                            <td>
+                            <input type="text" name='Stock_id 2'  placeholder='Stock_id' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                            </td>
+                            <tr id='addr0'>
+                            <td>
+                            <input type="text" name='Stock_id 3'  placeholder='Stock_id' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                            </td>
+                            <tr id='addr0'>
+                            <td>
+                            <input type="text" name='Stock_id 4'  placeholder='Stock_id' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="text" name='Quantity' placeholder='Quantity' class="form-control"/>
+                            </td>
+                            <td>
+                            <input type="date" name='Return_date' placeholder='Return_date' class="form-control"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <a id="add_row" type="s" class="btn btn-default pull-left">Add Row</a><a id='delete_row' class="btn btn-default">SUBMIT</a>
+    </div>
+
+</form>

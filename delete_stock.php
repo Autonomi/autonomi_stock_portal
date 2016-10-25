@@ -25,7 +25,7 @@
                         <li class="active"><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li><a href="new-issue-request.php">ISSUE</a></li>
+                        <li ><a href="issue_page.php">ISSUE</a></li>
                     </ul>
             </div>
          </nav>
@@ -60,70 +60,35 @@
                                             </tr>
                                     </thead>
                                     <tbody>
-                                        <tr id='addr2'>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                        <input type="Date" name='bill_date'  placeholder='Bill Date' class="form-control"/>
-                                        </td>
-                                        </tr>
                                         <tr id='addr1'>
                                         <td>
+                                            1
+                                        </td>
+                                        <td>
+                                        <input type="text" name='stock_id'  placeholder='Stock id' class="form-control"/>
+                                        </td>
+                                        </tr>
+                                        <tr id='addr2'>
+                                        <td>
                                             2
-                                        </td>
-                                        <td>
-                                        <input type="text" name='bill_amount'  placeholder='Price of stock' class="form-control"/>
-                                        </td>
-                                        </tr>
-                                        <tr id='addr4'>
-                                        <td>
-                                            5
-                                        </td>
-                                        <td>
-                                        <input type="text" name='bill_image_link'  placeholder='Bill Image Link' class="form-control"/>
-                                        </td>
-                                        </tr>
-                                        <tr id='addr3'>
-                                        <td>
-                                            4
-                                        </td>
-                                        <td>
-                                        <input type="text" name='name'  placeholder='Name of Stock' class="form-control"/>
-                                        </td>
-                                        </tr>
-                                        <tr id='addr3'>
-                                        <td>
-                                            4
                                         </td>
                                         <td>
                                         <input type="text" name='quantity'  placeholder='Quantity' class="form-control"/>
                                         </td>
                                         </tr>
-                                        
-                                        <tr id='addr5'>
+                                        <tr id='addr3'>
                                         <td>
-                                            6
+                                            3
                                         </td>
                                         <td>
-                                        <input type="text" name='description'  placeholder='Description' class="form-control"/>
-                                        </td>
-                                        </tr>
-                                        <tr id='addr7'>
-                                        <td>
-                                            8
-                                        </td>
-                                        <td>
-                                        <input type="text" name='image_link'  placeholder='Stock image link' class="form-control"/>
+                                        <input type="text" name='description'  placeholder='description or reason of removal' class="form-control"/>
                                         </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div >
-                        <div id="">
-                            <input type="SUBMIT" id="Purchased" value="Purchased" class="btn btn-default">
-                        </div>
+                        <input type="SUBMIT" id="delete" value="delete" class="btn btn-default">
                     </div>
 
                 </form>
@@ -142,4 +107,3 @@
 </script>
 </body>
 </html>
-

@@ -52,6 +52,8 @@
                     <li><a href="#">Settings</a></li>
                     <li><a href="purchase.php">Purchase</a></li>
                     <li><a href="new-stock-entry.php">New Stock Entry</a></li>
+                    <li><a href="#">Return</a></li>
+                    <li><a href="#">Delete Stock</a></li>
                     <li><a href="login.php">Logout</a></li>
                 </ul>
             </div>
