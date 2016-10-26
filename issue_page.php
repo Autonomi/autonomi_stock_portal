@@ -22,11 +22,11 @@
                             <a href="#" class="btn btn-success" id="menu-toggle"><span >Student</span></a>
                         </div>
                     </div></li>
-                        <li class="active"><a href="#" >HOME</a></li>
+                        <li ><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li><a href="new-issue-request.php">ISSUE</a></li>
-                        <li><a href="#">Return</a></li>
+                        <li class="active"><a href="new-issue-request.php">ISSUE</a></li>
+                        <li ><a href="return.php">Return</a></li>
                     </ul>
             </div>
          </nav>
