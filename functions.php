@@ -104,6 +104,22 @@ function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
 	$conn->close();
 }
 
+function display_all_stock() {
+	global $servername, $username, $pass, $db_name;
+	$conn = new mysqli($servername, $username, $pass);
+	
+	$conn->query("use ".$db_name);
+
+	$result = $conn -> query("SELECT * from stock_description");
+
+	if ($result->num_rows > 0) {
+		while($data = $result->fetch_assoc()) {
+			echo "stock_id: ".$data["stock_id"]."		name: ".$data["name"]."			description: ".$data["description"]."<br>";  
+		}
+	}
+	$conn->close();
+}
+
 function enter_bill ($bill_date, $bill_amount, $bill_image_link) {
 	global $servername, $username, $pass, $db_name;
 	$conn = new mysqli($servername, $username, $pass);
