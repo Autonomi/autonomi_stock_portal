@@ -81,7 +81,7 @@
                                             </td>
                                             <tr id='addr1'>
                                             <td>
-                                                2
+                                                1
                                             </td>
                                             <td>
                                             <input type="text" name='stock_id1'  placeholder='Stock_id' class="form-control"/>
@@ -94,7 +94,7 @@
                                             </td>
                                             <tr id='addr2'>
                                             <td>
-                                                3
+                                                2
                                             </td>
                                             <td>
                                             <input type="text" name='stock_id2'  placeholder='Stock_id' class="form-control"/>
@@ -107,7 +107,7 @@
                                             </td>
                                             <tr id='addr3'>
                                             <td>
-                                                4
+                                                3
                                             </td>
                                             <td>
                                             <input type="text" name='stock_id3'  placeholder='Stock_id' class="form-control"/>
@@ -120,7 +120,7 @@
                                             </td>
                                             <tr id='addr4'>
                                             <td>
-                                                5
+                                                4
                                             </td>
                                             <td>
                                             <input type="text" name='stock_id4'  placeholder='Stock_id' class="form-control"/>
@@ -143,19 +143,9 @@
             <div class="container-fluid">
             </div>
         </div>
-
-
-
-
-
-
-
-
         <footer>
             <img src="images/logo_footer.png" class="img-responsive"  widht="40" height="20">
        </footer>
-
-
 <script type="text/javascript">
         
     $("#menu-toggle").click( function (e){

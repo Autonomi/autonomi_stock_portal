@@ -76,14 +76,6 @@
                                         <input type="text" name='quantity'  placeholder='Quantity' class="form-control"/>
                                         </td>
                                         </tr>
-                                        <tr id='addr3'>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>
-                                        <input type="date" name='return_date'  placeholder='when you want to return' class="form-control"/>
-                                        </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
