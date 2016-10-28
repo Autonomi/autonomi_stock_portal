@@ -1,1 +1,1 @@
-# autonomi_stock_portal
+# autonomi_stock_portal and dbms project
