@@ -130,3 +130,17 @@ html{
     background: rgba(255, 255, 255, 0.8);
     box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
+alumni-cards {
+    padding: 25px 5px;
+}
+.alumni-card-container {
+    padding: 2.5px;
+}
+.alumni-card {
+    margin: 0px;
+    padding: 10px;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,.2),0 1px 1px 1px rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+    text-align: center;
+}
+.alumni-card-photo {
+    border-radius: 20% 20% 0 0;

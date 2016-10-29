@@ -29,7 +29,7 @@
                     <ul class="nav navbar-nav">
                     <li><div class="row">
                         <div class="col-lg-12">
-                            <a href="#" class="btn btn-success" id="menu-toggle"><span ><?php require_once "functions.php";
+                         <a href="#" class="btn btn-success" id="menu-toggle"><span >remove hi<?php require_once "functions.php";
                             if (isset($_SESSION["user_id"]))
                                 {echo "Hello, ".get_username()."";}
                             else 
@@ -56,8 +56,126 @@
             </div>
         </div>
         <!-- Page content -->
-        <div id="page-content-wrapper">
             <div class="container-fluid">
+                <div class="row">
+                <section class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <h1 class="page-header"> Stock </h1>
+                </section>
+            </div>
+            <div class="row">
+                
+                
+                <div id="alumni-cards" class="col-xs-12 col-lg-10 col-lg-offset-2">
+                    
+                    <!--<div class="row">-->
+                        
+                        <div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                            <div class="alumni-card">
+                                <div class="row">
+                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
+                                </div>
+                                <div class="row">
+                                    <div class="alumni-card-details">
+                                        <h4>Stock item</h4>
+                                        <h5>specs</h5>
+                                        <h6><br>quantity</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+            </div>
             </div>
         </div>
         <footer>
