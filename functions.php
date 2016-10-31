@@ -1,15 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$pass = "";
-$db_name = "Stock";
-
 
 function insert_purchase ($bill_date, $bill_amount, $bill_image_link, $stock_id, $quantity) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-	
-	$conn->query("use ".$db_name);
+	$conn = setup();
 
 	$bill_id = enter_bill($bill_date, $bill_amount, $bill_image_link);
 
@@ -25,23 +17,31 @@ function insert_purchase ($bill_date, $bill_amount, $bill_image_link, $stock_id,
 }
 
 function insert_new_stock ($bill_date, $bill_amount, $bill_image_link, $name, $description, $image_link, $quantity) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-	
-	$conn->query("use ".$db_name);
+	$conn = setup();
 
 	$stock_id = define_new_stock($name, $description, $image_link);
 
 	insert_purchase($bill_date, $bill_amount, $bill_image_link, $stock_id, $quantity);
 }
 
+function delete_stock ($stock_id, $quantity, $reason) {
+	$conn = setup();
+
+	$sql = "INSERT INTO deleted_stock VALUES (".$stock_id.", ".$quantity.", '".$reason."')";
+
+	if ($conn->query($sql) === TRUE) {
+	    echo "New record created successfully";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+
+	$conn->close();
+}
+
 function create_new_user($user_fullname, $u_name, $password, $email_id) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
+	$conn = setup();
 
-	$conn -> query("use ".$db_name);
-
-	$sql = "INSERT INTO users (user_fullname, username, password, email_id) VALUES (\"".$user_fullname."\", \"".$u_name."\", \"".md5($password)."\", \"".$email_id."\")";
+	$sql = "INSERT INTO users (user_fullname, username, password, email_id, user_type) VALUES (\"".$user_fullname."\", \"".$u_name."\", \"".md5($password)."\", \"".$email_id."\", 'student')";
 
 	$conn -> query($sql);
 
@@ -49,10 +49,7 @@ function create_new_user($user_fullname, $u_name, $password, $email_id) {
 }
 
 function login($u_name, $password) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-
-	$conn -> query("use ".$db_name);
+	$conn = setup();
 
 	$result = $conn -> query("select user_id from users where username = \"".$u_name."\" && password = \"".md5($password)."\"");
 	if ($result->num_rows > 0) {
@@ -68,10 +65,7 @@ function login($u_name, $password) {
 }
 
 function get_username() {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-
-	$conn -> query("use ".$db_name);
+	$conn = setup();
 
 	$result = $conn -> query("SELECT username FROM users WHERE user_id = ".$_SESSION["user_id"].";");
 	if ($result->num_rows > 0) {
@@ -87,11 +81,88 @@ function get_username() {
 	}
 }
 
-function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
+function check_user_type () {
+	$conn = setup();
+
+	$result = $conn -> query("SELECT user_type FROM users WHERE user_id = ".$_SESSION["user_id"].";");
+	if ($result->num_rows > 0) {
+		$data = $result->fetch_assoc();
+		$user_type = $data["user_type"];
+		$conn->close();
+		return $user_type;
+	}
+	else {
+		echo "error in getting user_type";
+		$conn->close();
+		return FALSE;
+	}
+}
+
+function calculate_quantity ($flag, $stock_id) {
+	# TOTAL PURCHASED
+	if ($flag == 0) {
+		return get_purchased_quantity($stock_id);
+	}
+	# TOTAL PURCHASED - DELETED
+	else if ($flag == 1) {
+		return get_purchased_quantity($stock_id) - get_deleted_quantity($stock_id);
+	}
+	# TOTAL PURCHASED - DELETED - ISSUED
+	else if ($flag == 2) {
+		return get_purchased_quantity($stock_id) - get_deleted_quantity($stock_id) - get_issued_quantity($stock_id);
+	}
+	else {
+		echo "invalid flag input";
+	}
+}
+
+function get_purchased_quantity ($stock_id) {
+	$conn = setup();
+	$quantity = 0;
+
+	$result = $conn->query("SELECT quantity FROM purchase_list WHERE stock_id = $stock_id");
+	# for checking if there was any result, without this there will be an error in some cases
+	if ($result->num_rows > 0) {
+		while ($data = $result->fetch_assoc()) {
+			$quantity += $data["quantity"];
+		}
+	}
+	$conn->close();
+	return $quantity;
+}
+
+function get_deleted_quantity ($stock_id) {
+	$conn = setup();
+	$quantity = 0;
 	
-	$conn->query("use ".$db_name);
+	$result = $conn->query("SELECT quantity FROM deleted_stock WHERE stock_id = $stock_id");
+	# for checking if there was any result, without this there will be an error in some cases
+	if ($result->num_rows > 0) {
+		while ($data = $result->fetch_assoc()) {
+			$quantity += $data["quantity"];
+		}
+	}
+	$conn->close();
+	return $quantity;
+}
+
+function get_issued_quantity ($stock_id) {
+	$conn = setup();
+	$quantity = 0;
+	
+	$result = $conn->query("SELECT quantity FROM issued_stock_list WHERE stock_id = $stock_id");
+	# for checking if there was any result, without this there will be an error in some cases
+	if ($result->num_rows > 0) {
+		while ($data = $result->fetch_assoc()) {
+			$quantity += $data["quantity"];
+		}
+	}
+	$conn->close();
+	return $quantity;
+}
+
+function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
+	$conn = setup();
 
 	$sql = "INSERT INTO issued_stock_list (user_id, stock_id, quantity, issue_date, return_date) VALUES (".$user_id.", ".$stock_id.", ".$quantity.", curdate(), \"".$return_date."\")";
 
@@ -105,10 +176,7 @@ function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
 }
 
 function display_all_stock() {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-	
-	$conn->query("use ".$db_name);
+	$conn = setup();
 
 	$result = $conn -> query("SELECT * from stock_description");
 
@@ -121,10 +189,7 @@ function display_all_stock() {
 }
 
 function enter_bill ($bill_date, $bill_amount, $bill_image_link) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-	
-	$conn->query("use ".$db_name);
+	$conn = setup();
 
 	$sql = "INSERT INTO bills (bill_date, bill_amount, bill_image_link) VALUES (\"".$bill_date."\", ".$bill_amount.", \"".$bill_image_link."\")";
 
@@ -136,17 +201,20 @@ function enter_bill ($bill_date, $bill_amount, $bill_image_link) {
 			$conn->close();
 			return $bill_id;
 		}
+		else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+	else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 	$conn->close();
 }
 
 function define_new_stock ($name, $description, $image_link) {
-	global $servername, $username, $pass, $db_name;
-	$conn = new mysqli($servername, $username, $pass);
-	
-	$conn->query("use ".$db_name);
+	$conn = setup();
 
-	$sql = "INSERT INTO stock_description (name, description, image_link) VALUES (\"".$name."\", ".$description.", \"".$image_link."\")";
+	$sql = "INSERT INTO stock_description (name, description, image_link) VALUES (\"".$name."\", \"".$description."\", \"".$image_link."\")";
 
 	if ($conn->query($sql) === TRUE) {
 		$result = $conn -> query("SELECT stock_id FROM stock_description WHERE name = \"".$name."\" && description = \"".$description."\" && image_link = \"".$image_link."\"");
@@ -156,6 +224,12 @@ function define_new_stock ($name, $description, $image_link) {
 			$conn->close();
 			return $stock_id;
 		}
+		else {
+			echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+	else {
+		echo "Error: " . $sql . "<br>" . $conn->error;
 	}
 	$conn->close();
 }
@@ -166,6 +240,18 @@ function validate_input($data) {
   	$data = stripslashes($data);
   	$data = htmlspecialchars($data);
   	return $data;
+}
+
+function setup() {
+	$servername = "localhost";
+	$username = "root";
+	$pass = "";
+	$db_name = "Stock";
+
+	$conn = new mysqli($servername, $username, $pass);
+	
+	$conn->query("use ".$db_name);
+	return $conn;
 }
 
 ?>

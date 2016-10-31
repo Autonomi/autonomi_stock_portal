@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$now = time();
+if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+}
+require_once "functions.php";
+?>
 <html lang="en">
 <head>
     <title>stock</title>
@@ -19,7 +29,11 @@
                     <ul class="nav navbar-nav">
                     <li><div class="row">
                         <div class="col-lg-12">
-                            <a href="#" class="btn btn-success" id="menu-toggle"><span >Student</span></a>
+                            <a href="#" class="btn btn-success" id="menu-toggle"><span ><?php require_once "functions.php";
+                            if (isset($_SESSION["user_id"]))
+                                {echo "Hello, ".get_username()."";}
+                            else 
+                                { header("Location: index.php");} ?></span></a>
                         </div>
                     </div></li>
                         <li ><a href="#" >HOME</a></li>
@@ -37,12 +51,22 @@
                     <li><a href="#">Settings</a></li>
                     <li><a href="purchase.php">Purchase</a></li>
                     <li><a href="new-stock-entry.php">New Stock Entry</a></li>
-                    <li><a href="delete_stock.php">Delete Stock</a></li>
-                    <li><a href="login.php">Logout</a></li>
+                    <li><a href="delete-stock.php">Delete Stock</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
-            <form role="form" action = "insert-purchase.php" method = "POST">
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+    if (calculate_quantity(2, $_POST["stock_id"]) >= $_POST["quantity"]) {
+        delete_stock($_POST["stock_id"], $_POST["quantity"], $_POST["reason"]);
+    }
+    else {
+        echo "you are deleting more stock than you have.";
+    }
+}
+?>
+            <form role="form" action = "<?php echo validate_input($_SERVER["PHP_SELF"]);?>" method = "POST">
                      <div class="container" id="issue_tab">
                         <div class="row clearfix">
                             <div class="col-md-5 column">
@@ -79,7 +103,7 @@
                                             3
                                         </td>
                                         <td>
-                                        <input type="text" name='description'  placeholder='description or reason of removal' class="form-control"/>
+                                        <input type="text" name='reason'  placeholder='description or reason of removal' class="form-control"/>
                                         </td>
                                         </tr>
                                     </tbody>

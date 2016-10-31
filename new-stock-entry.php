@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$now = time();
+if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+}
+?>
 <html lang="en">
 <head>
     <title>stock</title>
@@ -19,7 +28,11 @@
                     <ul class="nav navbar-nav">
                     <li><div class="row">
                         <div class="col-lg-12">
-                            <a href="#" class="btn btn-success" id="menu-toggle"><span >Student</span></a>
+                            <a href="#" class="btn btn-success" id="menu-toggle"><span ><?php require_once "functions.php";
+                            if (isset($_SESSION["user_id"]))
+                                {echo "Hello, ".get_username()."";}
+                            else 
+                                { header("Location: index.php");} ?></span></a>
                         </div>
                     </div></li>
                         <li class="active"><a href="#" >HOME</a></li>
@@ -37,8 +50,8 @@
                     <li><a href="#">Settings</a></li>
                     <li><a href="purchase.php">Purchase</a></li>
                     <li><a href="new-stock-entry.php">New Stock Entry</a></li>
-                    <li><a href="delete_stock.php">Delete Stock</a></li>
-                    <li><a href="login.php">Logout</a></li>
+                    <li><a href="delete-stock.php">Delete Stock</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>

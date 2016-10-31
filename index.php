@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+session_start();
+?>
 <html lang="en">
 <head>
     <title>stock</title>
@@ -32,8 +35,8 @@ else if (isset($_SESSION["login_error"]))
                             <a href="#" class="btn btn-success" id="menu-toggle"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></a>
                         </div>
                     </div></li>
-                    <li ><a href="#" >HOME</a></li>
-                        <li class="active"><a href="#" >ABOUT</a></li>
+                        <li ><a href="#" >HOME</a></li>
+                        <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
                     </ul>
             </div>
@@ -147,17 +150,6 @@ else if (isset($_SESSION["login_error"]))
                         }
                         ?>
                         <form role="form" action = "login.php" method = "POST">
-                        <!--
-                             <div class="dropdown">
-                              <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Account Type
-                              <span class="caret"></span></button>
-                              <ul class="dropdown-menu">
-                                <li><a href="#">ADMIN</a></li>
-                                <li><a href="#">TEACHER</a></li>
-                                <li><a href="#">STUDENT</a></li>
-                              </ul>
-                            </div>
-                            -->
                             <div class="form-group">
                                 <input type="text" name="u_name" id="u_name" class="form-control input-sm" placeholder="username">
                             </div>
