@@ -81,6 +81,23 @@ function get_username() {
 	}
 }
 
+function get_stock_name($stock_id) {
+	$conn = setup();
+
+	$result = $conn -> query("SELECT name FROM stock_description WHERE stock_id = $stock_id");
+	if ($result->num_rows > 0) {
+		$data = $result->fetch_assoc();
+		$name = $data["name"];
+		$conn->close();
+		return $name;
+	}
+	else {
+		echo "error in getting stock name";
+		$conn->close();
+		return FALSE;
+	}
+}
+
 function check_user_type () {
 	$conn = setup();
 
@@ -161,10 +178,10 @@ function get_issued_quantity ($stock_id) {
 	return $quantity;
 }
 
-function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
+function issue_stock ($user_id, $stock_id, $quantity) {
 	$conn = setup();
 
-	$sql = "INSERT INTO issued_stock_list (user_id, stock_id, quantity, issue_date, return_date) VALUES (".$user_id.", ".$stock_id.", ".$quantity.", curdate(), \"".$return_date."\")";
+	$sql = "INSERT INTO issued_stock_list (user_id, stock_id, quantity, issue_date, return_date) VALUES (".$user_id.", ".$stock_id.", ".$quantity.", curdate(), date_add(curdate(), INTERVAL 2 WEEK))";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo "New issue request created successfully";
@@ -175,18 +192,86 @@ function issue_stock ($user_id, $stock_id, $quantity, $return_date) {
 	$conn->close();
 }
 
-function display_all_stock() {
+function return_stock ($user_id, $issue_id, $stock_id, $issue_date, $issued_quantity, $return_quantity) {
 	$conn = setup();
 
-	$result = $conn -> query("SELECT * from stock_description");
+	if ($return_quantity == $issued_quantity) {
+		$sql = "UPDATE issued_stock_list SET return_status = 'pending' WHERE issue_id = $issue_id";
 
-	if ($result->num_rows > 0) {
-		while($data = $result->fetch_assoc()) {
-			echo "stock_id: ".$data["stock_id"]."		name: ".$data["name"]."			description: ".$data["description"]."<br>";  
+		if ($conn->query($sql) === TRUE) {
+		    echo "Return Request has been sent";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+	else {
+		$sql = "INSERT INTO issued_stock_list (user_id, stock_id, quantity, issue_date, return_date, return_status) VALUES (".$user_id.", ".$stock_id.", ".$return_quantity.", '".$issue_date."', date_add('$issue_date', INTERVAL 2 WEEK), 'pending')";
+		
+		if ($conn->query($sql) === TRUE) {
+		    echo "Return successful in return reissue";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+
+		$sql = "UPDATE issued_stock_list SET quantity = ".$issued_quantity - $return_quantity." WHERE issue_id = $issue_id";	
+
+		if ($conn->query($sql) === TRUE) {
+		    echo "updated the issued quantity";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
 		}
 	}
 	$conn->close();
 }
+
+function reissue_stock ($user_id, $issue_id, $stock_id, $issued_quantity, $reissue_quantity) {
+	$conn = setup();
+
+	if ($issued_quantity == $reissue_quantity) {
+		$sql = "UPDATE issued_stock_list SET return_date = date_add(curdate(), INTERVAL 2 WEEK) WHERE issue_id = $issue_id";
+
+		if ($conn->query($sql) === TRUE) {
+		    echo "Reissue successful";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+	else {
+		issue_stock ($user_id, $stock_id, $reissue_quantity);
+		$sql = "UPDATE issued_stock_list SET quantity = ".$issued_quantity - $reissue_quantity." WHERE issue_id = $issue_id";
+
+		if ($conn->query($sql) === TRUE) {
+		    echo "updated the issued quantity";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
+	}
+
+	$conn->close();
+}
+
+// function return_reissue_stock ($user_id, $issue_id, $stock_id, $issue_date, $issued_quantity, $return_quantity, $reissue_quantity) {
+// 	$conn = setup();
+
+// 	issue_stock ($user_id, $stock_id, $reissue_quantity);
+// 	$sql = "INSERT INTO issued_stock_list (user_id, stock_id, quantity, issue_date, return_date, return_status) VALUES (".$user_id.", ".$stock_id.", ".$return_quantity.", $issue_date, date_add($issue_date, INTERVAL 2 WEEK), 'pending')";
+	
+// 	if ($conn->query($sql) === TRUE) {
+// 	    echo "Return successful in return reissue";
+// 	} else {
+// 	    echo "Error: " . $sql . "<br>" . $conn->error;
+// 	}
+
+// 	$sql = "UPDATE issued_stock_list SET quantity = ".$issued_quantity - $return_quantity - $reissue_quantity." WHERE issue_id = $issue_id";	
+
+// 	if ($conn->query($sql) === TRUE) {
+// 	    echo "updated the issued quantity";
+// 	} else {
+// 	    echo "Error: " . $sql . "<br>" . $conn->error;
+// 	}
+
+// 	$conn->close();
+// }
 
 function enter_bill ($bill_date, $bill_amount, $bill_image_link) {
 	$conn = setup();

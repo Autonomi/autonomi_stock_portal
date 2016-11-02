@@ -7,6 +7,9 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
     session_destroy();
     header("Location: index.php");
 }
+if (!isset($_SESSION["user_id"])) {
+    header("Location: index.php");
+}
 ?>
 <html lang="en">
 <head>
@@ -22,16 +25,6 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
     <div id="header">
         <div id="top-nav">
             <img src="images/cic_logo.png" height="100px">
-            <ul class="nav navbar-nav navbar-right" style="margin-right:0px">
-                <li ><a type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ishModal" style="border-radius:0px 0px 5px 5px " href="#"><span class="glyphicon glyphicon-user"></span> ISSUE</a></li>
-                <li><?php 
-                if (isset($_SESSION["user_id"])) {
-                    echo $_SESSION["user_id"];
-                }
-                else echo "login please";
-                ?>
-                    </li>
-            </ul>
         </div>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -49,7 +42,7 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
                         <li ><a href="issue-page.php" >ISSUE</a></li>
-                        <li ><a href="return.php" >RETURN</a></li>
+                        <li ><a href="account-student.php" >RETURN</a></li>
                     </ul>
             </div>
          </nav>
@@ -77,113 +70,32 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
                 <div id="alumni-cards" class="col-xs-12 col-lg-10 col-lg-offset-2">
                     
                     <!--<div class="row">-->
-                        
-                        <div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
+
+<?php 
+require_once "functions.php";
+$conn = setup();
+$result = $conn->query("SELECT * FROM stock_description");
+if ($result->num_rows > 0) {
+    while ($data = $result->fetch_assoc()) { ?>
+                    <div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                        <div class="alumni-card">
+                            <div class= "row">
+                                <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
                             </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="alumni-card-container col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                            <div class="alumni-card">
-                                <div class="row">
-                                    <img class="img-circle col-xs-offset-2 col-xs-10 alumni-photo" src="images/6.jpg"/>
-                                </div>
-                                <div class="row">
-                                    <div class="alumni-card-details">
-                                        <h4>Stock item</h4>
-                                        <h5>specs</h5>
-                                        <h6><br>quantity</h6>
-                                    </div>
+                            <div class="row">
+                                <div class="alumni-card-details">
+                                    <h4><?php echo $data["name"]; ?></h4>
+                                    <h5><?php echo $data["description"]; ?></h5>
+                                    <h6><br><?php echo calculate_quantity(2, $data['stock_id']); ?></h6>
                                 </div>
                             </div>
                         </div>
-                        
+                    </div>
+<?php
+}}
+$conn->close();
+?>
+
             </div>
             </div>
         </div>
