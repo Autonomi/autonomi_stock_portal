@@ -56,11 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                                 { header("Location: index.php");} ?></span></a>
                         </div>
                     </div></li>
-                        <li ><a href="#" >HOME</a></li>
+                        <li ><a href="home-student.php" >HOME</a></li>
                         <li class="active"><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li ><a href="issue-page.php">ISSUE</a></li>
-                        <li  ><a href="#" >RETURN</a></li>
+                        <li ><a href="#">ISSUE</a></li>
+                        <li  ><a href="account-student.php" >RETURN</a></li>
                     </ul>
             </div>
          </nav>
