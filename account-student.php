@@ -80,10 +80,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                                 { header("Location: index.php");} ?></span></a>
                         </div>
                     </div></li>
-                        <li ><a href="#" >HOME</a></li>
+                        <li ><a href="home-student.php" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li ><a href="issue-page.php">ISSUE</a></li>
+                        <li ><a href="about-student.php">ISSUE</a></li>
                         <li  ><a href="#" >RETURN</a></li>
                     </ul>
             </div>
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 <ul class="sidebar-nav">
                     <li><a href="#">Account</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="login.php">Logout</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>

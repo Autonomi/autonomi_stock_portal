@@ -41,7 +41,7 @@ if (!isset($_SESSION["user_id"])) {
                         <li class="active"><a href="#" >HOME</a></li>
                         <li ><a href="#" >ABOUT</a></li>
                         <li ><a href="#" >CONTENT</a></li>
-                        <li ><a href="issue-page.php" >ISSUE</a></li>
+                        <li ><a href="about-student.php" >ISSUE</a></li>
                         <li ><a href="account-student.php" >RETURN</a></li>
                     </ul>
             </div>
